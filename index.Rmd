@@ -1,0 +1,186 @@
+---
+title: |
+  ![](https://opencasestudies.github.io/img/icon-bahi.png){width=120px align=left style="padding-right: 20px"}
+  Making Interactive Case Studies Tutorial
+css: www/style.css
+output:
+  html_document:
+    includes:
+       in_header: www/GA_Script.Rhtml
+    self_contained: yes
+    code_download: yes
+    highlight: tango
+    number_sections: no
+    theme: cosmo
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(include = TRUE, comment = NA, echo = TRUE,
+                      message = FALSE, warning = FALSE, cache = FALSE,
+                      fig.align = "center", out.width = '90%')
+library(knitr)
+library(here)
+
+# additional libraries needed
+library(learnr)
+library(gradethis)
+gradethis::gradethis_setup()
+```
+
+<!-- Open all links in new tab-->  
+<base target="_blank"/> 
+
+<p>&nbsp;</p>
+
+# **1. Setting Up**
+***
+
+## **`www` Directory**
+***
+
+Only the files in this `www` directory will be published with the `index.Rmd`.
+
+In this `www` directory, we need to have:
+
+* `style.css`
+* `GA_Script.Rhtml`
+*  move the `data`, `docs`, `img`, etc. directories of the static version into the `www` directory. These directories contain the files needed to render the `index.Rmd` file.
+* Additionally, we need to make an **`exercise` sub-directory**. This is where we would put the `.rda` files for the "setup" of the exercises.
+
+## **YAML Header**
+***
+
+Refer to the YAML header of this `.Rmd` file.
+
+Important notes (the followings are different from the static version):
+
+* title
+* `css: www/style.css` (the statics version does not have the `www` directory)
+* `in_header: www/GA_Script.Rhtml` (the statics version does not have the `www` directory)
+* the addition of `runtime: shiny_prerendered`
+
+## **R Setup Chunk**
+***
+
+Refer to the setup chunk of this `.Rmd` file.
+
+The main difference here is the addition of the the following libraries:
+
+```{r, eval=FALSE}
+library(learnr)
+library(gradethis)
+gradethis::gradethis_setup()
+```
+
+*Note: you might need to install `gradethis` from [github](https://github.com/rstudio/gradethis)*
+
+## **Translate**
+***
+
+Use the following code for translation
+
+```
+<div align="left" id="google_translate_element",></div>
+
+<script type="text/javascript" src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+```
+
+*Note: this is different from the statics version. There is an extra "comma" at the end of `id="google_translate_element"`. The translation tool would not work without this comma (not sure why).*
+
+## **Table of Content**
+***
+
+You might want to get rid of the following css code from the static version
+
+```
+<style>
+#TOC {
+  background: url("https://opencasestudies.github.io/img/icon-bahi.png");
+  background-size: contain;
+  padding-top: 240px !important;
+  background-repeat: no-repeat;
+}
+</style>
+```
+
+Unlike in the static version, this would not add the logo to the table of content in the interactive app. Could work on how to add logo to the toc for interactive apps.
+
+## **`.gitignore`**
+***
+
+Add `rsconnect/` to the `.gitignore` file
+
+## **Optional: Add `exercise_block` to `www/style.css`**
+***
+
+You could add a specific style for the exercises by adding the following code to the `style.css` file:
+
+```
+.exercise_block {
+    padding: .5em;
+    border: 1px solid lightgrey;
+    background: white;
+    color: black;
+}
+```
+
+#### {.exercise_block}
+
+This is what the exercise block looks like. You might modify it if you want.
+
+####
+
+
+# **2. Modifications of the Static Version**
+***
+
+## **`data`, `docs`, `img`, etc. Directories are now Sub-Directories of `www`**
+***
+
+I will use some examples to explain this. **A quick way to find where needs to be modified is to do `CTRL + F` and search for `here(`**
+
+### Case 1: simply add the `www` directory
+
+***
+*In the static version:*
+
+![](www/img/includegraphics.PNG)
+
+***
+
+*In the interactive version:*
+
+![](www/img/includegraphics_new.PNG)
+
+***
+
+### Case 2: set the original chunk to `eval = FALSE` and the new chunk to `echo = FALSE`
+***
+
+*In the static version:*
+
+![](www/img/load.PNG)
+
+***
+
+*In the interactive version:*
+
+![](www/img/load_new.PNG)
+
+***
+
+
+# **3. Add Exercises**
