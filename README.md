@@ -1,1 +1,1 @@
-# make-interactive-tutorial
+# Making Interactive Case Studies Tutorial
