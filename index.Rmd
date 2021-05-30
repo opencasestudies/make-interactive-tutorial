@@ -184,3 +184,203 @@ I will use some examples to explain this. **A quick way to find where needs to b
 
 
 # **3. Add Exercises**
+***
+
+Each exercise chunk should have their own name. For example, `dw_code1` for the first coding problem embedded in the analysis of the "Data Wrangling" section, `dw_quiz` for the quiz of the "Data Wrangling" section, `dv_exercise1` for the first coding exercise of the "Exercise" subsection of the "Data Visualization" section, etc.
+
+## **Coding Problems Embedded in the Analyses**
+***
+
+These could be the "Question Opportunities" ,or when an analysis is repeated with a different dataset and we want the students to come up with the code using what they learned, etc.
+
+* First, before the exercise setup chunk, we need to save the dataset needed in the exercise as a `.rda` file and put it in the `exercise` sub-directory of the `www` folder.
+* Then, in the exercise setup chunk, we need to load whatever libraries needed for this exercise that are not loaded in the `index.Rmd` setup chunk. In addition, we need to load the `.rda` made in the first step.
+* Then, we can start making the exercise.
+* Finally, when necessary, after the exercise, we can make a click to expend section containing the code and the output so that students may choose to skip these exercises.
+
+Here is an example from the obesity case study:
+
+![](www/img/exercise1.PNG)
+
+![](www/img/exercise2.PNG)
+
+
+## **The Exercise Subsection**
+***
+
+Each section (data wrangling, data visualization, etc.) could have their "Exercise" subsection as the last subsection.
+
+### **Quizzes**
+***
+
+Following is an example from the CO2 case study:
+
+```{r dw_quiz, echo = FALSE}
+quiz(caption = "",
+  question("Which one of the following functions in the `dplyr` package allows us to see all of the variables (columns) at once, where several values of those columns are shown on the right of the variable names?",
+    answer("`slice_head()`", message = "This function allows us to see just the first rows of the data."),
+    answer("`slice_sample()`", message = "This function allows us to see a selection of random rows of the data."),
+    answer("`slice_tail()`", message = "This function allows us to see the rows at the end of the data."),
+    answer("`glimpse()`", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question("Which one of the pipe operators (from the `magrittr` package) should be used right after a variable name if we want to perform a sequence of operations on that variable, and meanwhile, assign the final output to that variable (without redefining that variable using `<-` or `=`)?",
+    answer("`%>%`", message = "This operator cannot assign the final output to that variable."),
+    answer("`%<%`", message = "This is not a valie pipe operator."),
+    answer("`%T>%`", message = "This is the side-effects operator."),
+    answer("`%<>%`", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question("Which of the following can the `mutate()` function in the `dplyr` package do? (more than one correct answers)",
+    answer("Select certain variables(columns) of the data.", message = "Selecting certain variables(columns) of the data is the function of the `select()` function."),
+    answer("Rename a variable.", message = "Renaming a variable is the function of the `rename()` function."),
+    answer("Create a new variable.", correct = TRUE),
+    answer("Modify an existing variable.", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+### **Coding Exercise**
+***
+
+* Following is an example from the CO2 case study **without use of the `gradethis` package**:
+
+#### {.exercise_block}
+
+We have created a dataset called `wide_format` that is in "wide" format. Write some code to convert it to "long" format. (We want 3 columns with names "ID", "Variable", and "Value".)
+
+```{r dw_exercise1-setup}
+ID <- c(1, 2, 3)
+Year <- c(2015, 2018, 2019)
+Length <- c(20, 21.5, 19)
+wide_format <- data.frame(ID, Year, Length)
+```
+
+```{r dw_exercise1, exercise=TRUE, exercise.eval=TRUE, exercise.lines = 5}
+wide_format
+```
+
+```{r dw_exercise1-hint}
+wide_format %>%
+  pivot_longer()
+```
+
+```{r dw_exercise1-solution}
+wide_format %>%
+  pivot_longer(cols = -ID, names_to = "Variable", values_to = "Value")
+```
+
+####
+
+<p>&nbsp;</p>
+
+* Following is an example from the CO2 case study **with use of the `gradethis` package**:
+
+#### {.exercise_block}
+
+`mtcars` is a built-in R dataset as shown below. Use this dataset to complete the following exercise.
+
+```{r}
+mtcars
+```
+
+Write some code that will:
+
+1. Create a new dataset called `new.mtcars` from `mtcars`.
+2. Create a new column called `car` in `new.mtcars` that uses the values from the row names of `mtcars`. (Use the `rownames_to_column` function from the `tibble` package. See documentation [here](https://tibble.tidyverse.org/reference/rownames.html){target="_blank"}.)
+3. Only keep the `car`, `mpg`, and `cyl` columns of this `new.mtcars` dataset.
+4. Only keep the cars that have `cyl` = 4.
+5. Rearrange the dataset by `mpg` in descending order.
+
+*Note: replace the underscores("\_") with your code with one character per "\_". Click "Submit Answer" to check your answer. *
+
+```{r dw_exercise2-setup}
+library(tidyverse)
+```
+
+```{r dw_exercise2, exercise=TRUE, eval=FALSE}
+# step 1
+new.mtcars <- mtcars %>%
+  # step 2
+  rownames_to_column(var = "___") %>%
+  # step 3
+  ______(___, ___, ___) %>%
+  # step 4
+  ______(___ == _) %>%
+  # step 5
+  _______(____(mpg))
+
+# view data (Do NOT include this part when submitting your answer!)
+# new.mtcars
+```
+
+```{r dw_exercise2-hint-1}
+# step 2:
+# The "var" argument is the name of the new column that will use the values from the row names. What is the column name?
+```
+
+```{r dw_exercise2-hint-2}
+# step 2:
+# The "var" argument is the name of the new column that will use the values from the row names. What is the column name?
+
+# step 3:
+# Which function of the "dplyr" package select columns?
+```
+
+```{r dw_exercise2-hint-3}
+# step 2:
+# The "var" argument is the name of the new column that will use the values from the row names. What is the column name?
+
+# step 3:
+# Which function of the "dplyr" package select columns?
+
+# step 4:
+# Which function of the "dplyr" package subset rows?
+```
+
+```{r dw_exercise2-hint-4}
+# step 2:
+# The "var" argument is the name of the new column that will use the values from the row names. What is the column name?
+
+# step 3:
+# Which function of the "dplyr" package select columns?
+
+# step 4:
+# Which function of the "dplyr" package subset rows?
+
+# step 5:
+# Which function of the "dplyr" package will reorder the data?
+# What argument do we need to reorder in descending order?
+```
+
+```{r dw_exercise2-hint-5}
+# Next hint will show you the solution
+```
+
+```{r dw_exercise2-solution}
+new.mtcars <- mtcars %>%
+  rownames_to_column(var = "car") %>%
+  select(car, mpg, cyl) %>%
+  filter(cyl == 4) %>%
+  arrange(desc(mpg))
+```
+
+```{r dw_exercise2-check, eval=FALSE}
+grade_code()
+```
+
+####
+
+
+# **4. Maintenance Notes**
+***
+
+See the `maintenance_notes.Rmd` file as an example.
+
+Make sure to list the names of the exercise chunks for future maintenance. Except for things mentioned in this tutorial, other changes should be noted as well.
+
+![](www/img/maintenance.PNG)
