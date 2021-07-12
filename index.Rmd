@@ -1,6 +1,6 @@
 ---
 title: |
-  ![](https://opencasestudies.github.io/img/icon-bahi.png){width=120px align=left style="padding-right: 20px"}
+  ![](www/img/interactive_logo.png){width=120px align=left style="padding-right: 20px"}
   Making Interactive Case Studies Tutorial
 css: www/style.css
 output:
@@ -117,11 +117,6 @@ You might want to get rid of the following css code from the static version
 ```
 
 Unlike in the static version, this would not add the logo to the table of content in the interactive app. Could work on how to add logo to the toc for interactive apps.
-
-## **`.gitignore`**
-***
-
-Add `rsconnect/` to the `.gitignore` file
 
 ## **Optional: Add `exercise_block` to `www/style.css`**
 ***
@@ -384,3 +379,8 @@ See the `maintenance_notes.Rmd` file as an example.
 Make sure to list the names of the exercise chunks for future maintenance. Except for things mentioned in this tutorial, other changes should be noted as well.
 
 ![](www/img/maintenance.PNG)
+
+# **5. Publishing**
+***
+
+Make sure the `rsconnect` folder is also pushed to GitHub.
