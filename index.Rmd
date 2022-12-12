@@ -1,7 +1,7 @@
 ---
 title: |
   ![](www/img/interactive_logo.png){width=120px align=left style="padding-right: 20px"}
-  Making Interactive Case Studies Tutorial
+Interactive Case Studies Tutorial
 css: www/style.css
 output:
   html_document:
@@ -39,8 +39,16 @@ gradethis::gradethis_setup()
 
 <p>&nbsp;</p>
 
+This tutorial will guide you through how to create interactive case studies.
+
+
+
 # **1. Setting Up**
 ***
+
+First you will need to be able to host your interactive case study using a method that supports R Shiny apps. For example, you can currently support 5 free apps per Shiny user. Otherwise, your institution may have paid to have an organizational Shiny Server license or an RStudio Connect (this is now called [Posit Connect](https://posit.co/products/enterprise/connect/) since RStudio changed it's name) license. 
+
+
 
 ## **`www` Directory**
 ***
