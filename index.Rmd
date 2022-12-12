@@ -48,6 +48,33 @@ This tutorial will guide you through how to create interactive case studies.
 
 First you will need to be able to host your interactive case study using a method that supports R Shiny apps. For example, you can currently support 5 free apps per Shiny user. Otherwise, your institution may have paid to have an organizational Shiny Server license or an RStudio Connect (this is now called [Posit Connect](https://posit.co/products/enterprise/connect/) since RStudio changed it's name) license. 
 
+You will also need to install some packages like `learnr` and `gradethis`.
+
+```{r, eval = FALSE}
+install.packages("learnr")
+```
+
+
+```{r, eval = FALSE}
+# install.packages("remotes")
+remotes::install_github("rstudio/gradethis")
+```
+
+```{r, eval=FALSE}
+library(learnr)
+library(gradethis)
+```
+
+Next, you need to decide which of the two methods you wish to use to make your case study interactive.
+
+The two methods:
+
+1) create individual shiny apps for each exercise and then add these to your typical case study
+    - Pro: This can be a good option if you are using a lot of data and it might be slow for your case study to run and it is also easier to find what exercise to update overtime.
+    - Con: This is a bit challenging to organize and if you are trying to use your shiny account you will run out of apps quickly!
+2) create your case study as a learnR tutorial
+   - Pro: This requires only one Shiny app, which may be critical if you don't want to pay for a license for Shiny.
+   - Con: This can be slower to render and it can be more difficult to troubleshoot if your case study has an issue. It also changes the way the case sudy is formatted a bit.
 
 
 ## **`www` Directory**
@@ -87,7 +114,7 @@ library(gradethis)
 gradethis::gradethis_setup()
 ```
 
-*Note: you might need to install `gradethis` from [github](https://github.com/rstudio/gradethis)*
+
 
 ## **Translate**
 ***
