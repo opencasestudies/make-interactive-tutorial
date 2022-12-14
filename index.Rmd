@@ -1,6 +1,7 @@
 ---
 title: |
     ![](www/img/interactive_logo.png){width=1in}Interactive Case Studies Tutorial
+subtitle: Single App Version
 css: www/style.css
 output:
   html_document:
@@ -39,7 +40,7 @@ gradethis::gradethis_setup()
 
 <p>&nbsp;</p>
 
-This tutorial will guide you through how to create interactive case studies.
+This tutorial will guide you through how to create an interactive case study using a method where the entire case study is a single `learnr` tutorial hosted as a Shiny app.
 
 
 
@@ -65,13 +66,14 @@ Next, you need to decide which of the two methods you wish to use to make your c
 
 The two methods:
 
-1) create individual shiny apps for each exercise and then add these to your typical case study
+1) create individual shiny apps for each exercise and then add these to your typical case study using iframes
     - Pro: This can be a good option if you are using a lot of data and it might be slow for your case study to run and it is also easier to find what exercise to update overtime.
     - Con: This is a bit challenging to organize and if you are trying to use your shiny account you will run out of apps quickly!
 2) create your case study as a learnR tutorial
    - Pro: This requires only one Shiny app, which may be critical if you don't want to pay for a license for Shiny.
    - Con: This can be slower to render and it can be more difficult to troubleshoot if your case study has an issue. It also changes the way the case sudy is formatted a bit.
 
+If you prefer option 2 continue with this tutorial. 
 
 ## **`www` Directory**
 ***
