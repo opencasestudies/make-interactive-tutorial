@@ -1,7 +1,6 @@
 ---
 title: |
-  ![](www/img/interactive_logo.png){width=120px align=left style="padding-right: 20px"}
-Interactive Case Studies Tutorial
+    ![](www/img/interactive_logo.png){width=1in}Interactive Case Studies Tutorial
 css: www/style.css
 output:
   html_document:
@@ -20,6 +19,7 @@ output:
     toc: yes
 runtime: shiny_prerendered
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(include = TRUE, comment = NA, echo = TRUE,
@@ -60,10 +60,6 @@ install.packages("learnr")
 remotes::install_github("rstudio/gradethis")
 ```
 
-```{r, eval=FALSE}
-library(learnr)
-library(gradethis)
-```
 
 Next, you need to decide which of the two methods you wish to use to make your case study interactive.
 
@@ -94,11 +90,11 @@ In this `www` directory, we need to have:
 
 Refer to the YAML header of this `.Rmd` file.
 
-Important notes (the followings are different from the static version):
+Important notes (the followings are different from the static version of case studies):
 
 * title
 * `css: www/style.css` (the statics version does not have the `www` directory)
-* `in_header: www/GA_Script.Rhtml` (the statics version does not have the `www` directory)
+* `in_header: www/GA_Script.Rhtml` (the statics version does not have the `www` directory - this is the script for google analytics if you decide to use that)
 * the addition of `runtime: shiny_prerendered`
 
 ## **R Setup Chunk**
@@ -151,7 +147,7 @@ You might want to get rid of the following css code from the static version
 </style>
 ```
 
-Unlike in the static version, this would not add the logo to the table of content in the interactive app. Could work on how to add logo to the toc for interactive apps.
+Unlike in the static version, this would not add the logo to the table of contents in the interactive app. Could work on how to add logo to the toc for interactive apps.
 
 ## **Optional: Add `exercise_block` to `www/style.css`**
 ***
@@ -180,7 +176,7 @@ This is what the exercise block looks like. You might modify it if you want.
 ## **`data`, `docs`, `img`, etc. Directories are now Sub-Directories of `www`**
 ***
 
-I will use some examples to explain this. **A quick way to find where needs to be modified is to do `CTRL + F` and search for `here(`**
+I will use some examples to explain this. **A quick way to find where it needs to be modified is to do `CTRL + F` and search for `here(`**
 
 ### Case 1: simply add the `www` directory
 
