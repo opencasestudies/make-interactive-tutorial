@@ -176,33 +176,35 @@ This is what the exercise block looks like. You might modify it if you want.
 ## **`data`, `docs`, `img`, etc. Directories are now Sub-Directories of `www`**
 ***
 
-I will use some examples to explain this. **A quick way to find where it needs to be modified is to do `CTRL + F` and search for `here(`**
 
-### Case 1: simply add the `www` directory
+The file paths in the case study index.Rmd file that refer to these directories will need to be edited to reflect the new parent directory `www`. There are two cases of code chunks that will need to be edited slightly differently. I will use some examples to explain this. **A quick way to find where needs to be modified is to do `CTRL + F` and search for `here(`**
+
+
+### Case 1: Static version chunk set to `echo = FALSE`
 
 ***
-*In the static version:*
+*When the static version has `echo = FALSE`:*
 
 ![](www/img/includegraphics.PNG)
 
 ***
 
-*In the interactive version:*
+*Simply add the `www` directory to the interactive version:*
 
 ![](www/img/includegraphics_new.PNG)
 
 ***
 
-### Case 2: set the original chunk to `eval = FALSE` and the new chunk to `echo = FALSE`
+### Case 2: Static version chunk not set to `echo = FALSE`
 ***
 
-*In the static version:*
+*When the static version does not have `echo = FALSE`:*
 
 ![](www/img/load.PNG)
 
 ***
 
-*In the interactive version:*
+*Set the original chunk to `eval = FALSE` and the new chunk to `echo = FALSE` in the interactive version:*
 
 ![](www/img/load_new.PNG)
 
